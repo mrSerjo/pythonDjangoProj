@@ -33,12 +33,21 @@
             {% for item in news %}
             <div class="card mb-3">
                 <div class="card-header">
-                    Категория:
+                    Категория: {{ item.category }}
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ item.title }}</h5>
-                    <p class="card-text">{{ item.content }}</p>
-                    <a href="#" class="btn btn-primary">Read more...</a>
+                    <div class="media">
+                        {% if item.photo %}
+                        <img src="{{ item.photo.url }}" width="200">
+                        {% else %}
+                        <img src="https://picsum.photos/id/237/200/300">
+                        {% endif %}
+                        <div class="media-body">
+                            <h5 class="card-title">{{ item.title }}</h5>
+                            <p class="card-text">{{ item.content }}</p>
+                            <a href="#" class="btn btn-primary">Read more...</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-footer text-muted">
                     {{ item.created_at|date:"Y-m-d H:i:s" }}
